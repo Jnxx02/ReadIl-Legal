@@ -1,1 +1,1 @@
-"# ReadMe" 
+"# ReadMe - Aplikasi Baca Komik Illegal" 
