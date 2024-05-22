@@ -12,7 +12,7 @@
 
     <fragment
         android:id="@+id/userFragment"
-        android:name="com.example.final_mobile.fragment.UserFragment"
+        android:name="com.example.final_mobile.fragment.ProfileFragment"
         android:label="User"
         tools:layout="@layout/fragment_user" />
 </navigation>
