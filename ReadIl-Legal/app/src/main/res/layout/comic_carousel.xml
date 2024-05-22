@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="4dp">
+
+    <ImageView
+        android:id="@+id/comic_cover"
+        android:layout_width="191dp"
+        android:layout_height="230dp"
+        android:foreground="@drawable/shadow"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/comic_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/open_sans_extrabold"
+        android:gravity="bottom"
+        android:text="Solo Leveling"
+        android:textColor="@color/pallet4"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/comic_genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/comic_title"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:paddingHorizontal="2dp"
+        android:background="@drawable/genre_background"
+        android:fontFamily="@font/poppins_light"
+        android:text="Action, Fantasy, Mysetery"
+        android:textStyle="bold"
+        android:textColor="@color/pallet4"
+        android:textSize="12sp" />
+</RelativeLayout>
