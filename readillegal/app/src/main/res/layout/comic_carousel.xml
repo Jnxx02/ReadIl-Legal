@@ -24,7 +24,9 @@
         android:text="Solo Leveling"
         android:textColor="@color/pallet4"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:maxLines="2"
+        android:ellipsize="end"/>
 
     <TextView
         android:id="@+id/tv_favTags"
@@ -32,12 +34,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_favTitle"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:paddingHorizontal="2dp"
+        android:layout_marginTop="3dp"
         android:background="@drawable/genre_background"
         android:fontFamily="@font/poppins_light"
+        android:paddingHorizontal="2dp"
         android:text="Action, Fantasy, Mysetery"
-        android:textStyle="bold"
         android:textColor="@color/pallet4"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:maxLines="2"
+        android:ellipsize="end"/>
 </RelativeLayout>

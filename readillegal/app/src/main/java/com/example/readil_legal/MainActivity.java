@@ -1,14 +1,10 @@
 package com.example.readil_legal;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.readil_legal.fragment.FavoriteFragment;
-import com.example.readil_legal.fragment.HomeFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -16,34 +12,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
-            Fragment selectedFragment = null;
+        Button btnStart = findViewById(R.id.btn_start);
 
-            if (menuItem.getItemId() == R.id.nav_home) {
-                selectedFragment = new HomeFragment();
-            } else if (menuItem.getItemId() == R.id.nav_favorite) {
-                selectedFragment = new FavoriteFragment();
-            }
-
-            if (selectedFragment != null) {
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, selectedFragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
-
-            return true;
+        btnStart.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, LobbyActivity.class);
+            startActivity(intent);
         });
-
-        getSupportFragmentManager().
-
-                beginTransaction()
-                        .
-
-                replace(R.id.fragment_container, new HomeFragment())
-                        .
-
-                commit();
     }
 }

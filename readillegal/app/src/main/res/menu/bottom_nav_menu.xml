@@ -5,6 +5,10 @@
         android:icon="@drawable/baseline_home_24"
         android:title="Home" />
     <item
+        android:id="@+id/nav_lobby"
+        android:icon="@drawable/readle_icon"
+        android:title="ReadIl-Legal" />
+    <item
         android:id="@+id/nav_favorite"
         android:icon="@drawable/baseline_favorite_24"
         android:title="Favorites" />

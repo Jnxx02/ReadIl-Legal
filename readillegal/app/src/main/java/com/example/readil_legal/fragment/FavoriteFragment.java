@@ -26,12 +26,6 @@ import java.util.List;
 
 
 public class FavoriteFragment extends Fragment {
-    private RecyclerView recyclerView;
-    private FavoriteAdapter favoriteAdapter;
-    private List<Manga> favoriteMangaList;
-    private SharedPreferences sharedPreferences;
-    private Gson gson;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,22 +37,25 @@ public class FavoriteFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView = view.findViewById(R.id.rv_list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        RecyclerView recyclerView = view.findViewById(R.id.rv_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),
+                LinearLayoutManager.HORIZONTAL, false));
 
-        sharedPreferences = getActivity().getSharedPreferences("favorites", Context.MODE_PRIVATE);
-        gson = new Gson();
+        SharedPreferences sharedPreferences = getActivity()
+                .getSharedPreferences("favorites_list", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
 
         // Retrieve favorites from SharedPreferences
         String jsonFavorites = sharedPreferences.getString("favorites_list", "");
         Type type = new TypeToken<List<Manga>>() {}.getType();
-        favoriteMangaList = gson.fromJson(jsonFavorites, type);
+        List<Manga> favoriteMangaList = gson.fromJson(jsonFavorites, type);
 
         if (favoriteMangaList == null) {
             favoriteMangaList = new ArrayList<>();
         }
 
-        favoriteAdapter = new FavoriteAdapter(favoriteMangaList, getContext());
+        FavoriteAdapter favoriteAdapter = new FavoriteAdapter(favoriteMangaList,
+                getContext());
         recyclerView.setAdapter(favoriteAdapter);
     }
 }

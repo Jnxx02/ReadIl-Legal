@@ -92,33 +92,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tags_label"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/poppins_light"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tv_detailTags"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Action, Adventure"
-                    android:paddingStart="8dp"
-                    android:fontFamily="@font/poppins_light"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="@string/status_label"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
@@ -162,17 +135,36 @@
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tags_label"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_light"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_detailTags"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Action, Adventure"
+                    android:paddingStart="8dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-    <ProgressBar
-        android:id="@+id/loading_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone"/>
-
-    <!-- Add buttons for back and favorite -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -199,7 +191,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/btn_star_big_off"
-            android:layout_marginStart="240dp"
+            android:layout_marginStart="280dp"
             android:contentDescription="favorite"
             android:layout_gravity="end" />
     </LinearLayout>

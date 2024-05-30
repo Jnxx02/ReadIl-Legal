@@ -33,7 +33,7 @@ import retrofit2.Response;
 
 public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.MangaViewHolder> {
     private List<Manga> mangaList;
-    private final Context context;
+    private Context context;
     private final ApiService apiService;
 
     public MangaAdapter(List<Manga> mangaList, Context context) {
@@ -45,7 +45,8 @@ public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.MangaViewHol
     @NonNull
     @Override
     public MangaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.comic_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.comic_list, parent,
+                false);
         return new MangaViewHolder(view);
     }
 
@@ -60,14 +61,16 @@ public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.MangaViewHol
 
         String coverId = manga.getCoverId();
         String mangaId = manga.getId();
+
         if (coverId != null) {
             apiService.getMangaCover(coverId).enqueue(new Callback<CoverResponse>() {
                 @Override
                 public void onResponse(@NonNull Call<CoverResponse> call, @NonNull Response<CoverResponse> response) {
                     if (response.isSuccessful() && response.body() != null) {
-                        String coverUrl = "https://uploads.mangadex.org/covers/" + mangaId + "/" + response.body().getData().getAttributes().getFileName();
+                        String coverUrl =
+                                "https://uploads.mangadex.org/covers/" + mangaId + "/" + response.body()
+                                        .getData().getAttributes().getFileName();
                         Picasso.get().load(coverUrl).into(holder.coverImage);
-                        Log.d("MangaAdapterss", "Manga Title: " + manga.getAttributes().getTitle().getEn());
                     }
                 }
 
@@ -87,7 +90,8 @@ public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.MangaViewHol
                 MangaDetailFragment mangaDetailFragment = new MangaDetailFragment();
                 mangaDetailFragment.setArguments(bundle);
 
-                FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
+                FragmentManager fragmentManager = ((AppCompatActivity) context).
+                        getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, mangaDetailFragment)
                         .addToBackStack(null)

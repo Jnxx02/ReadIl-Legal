@@ -35,15 +35,6 @@
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"/>
-
-            <ImageView
-                android:id="@+id/iv_search"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="end"
-                android:layout_marginEnd="24dp"
-                android:src="@drawable/icon_search"
-                android:contentDescription="Search Icon"/>
         </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
@@ -88,7 +79,8 @@
                     android:id="@+id/btn_previous_page"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
-                    android:text="Previous"
+                    android:text="Prev"
+                    android:background="@drawable/button_bg"
                     android:fontFamily="@font/poppins_light"/>
 
                 <TextView
@@ -107,6 +99,7 @@
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:text="Next"
+                    android:background="@drawable/button_bg"
                     android:fontFamily="@font/poppins_light"/>
             </LinearLayout>
 

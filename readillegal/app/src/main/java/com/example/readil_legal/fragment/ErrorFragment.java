@@ -6,8 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +25,6 @@ import retrofit2.Response;
 
 
 public class ErrorFragment extends Fragment {
-    private Button btnRetry;
     private ApiService service;
 
     @Override
@@ -41,36 +38,34 @@ public class ErrorFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btnRetry = view.findViewById(R.id.btn_retry);
+        Button btnRetry = view.findViewById(R.id.btn_retry);
 
-        Handler handler = new Handler(Looper.getMainLooper());
         ExecutorService executor = Executors.newSingleThreadExecutor();
 
         service = RetrofitClient.getClient().create(ApiService.class);
 
-        btnRetry.setOnClickListener(v -> executor.execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(500);
-                    Call<MangaResponse> call = service.getMangaList(10, 100);
-                    call.enqueue(new Callback<MangaResponse>() {
-                        @Override
-                        public void onResponse(@NonNull Call<MangaResponse> call, @NonNull Response<MangaResponse> response) {
-                            if (response.isSuccessful()) {
-                                getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-                            }
+        btnRetry.setOnClickListener(v -> executor.execute(() -> {
+            try {
+                Thread.sleep(500);
+                Call<MangaResponse> call = service.getMangaList(10, 100);
+                call.enqueue(new Callback<MangaResponse>() {
+                    @Override
+                    public void onResponse(@NonNull Call<MangaResponse> call, @NonNull Response<MangaResponse> response) {
+                        if (response.isSuccessful()) {
+                            getParentFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.fragment_container, new HomeFragment())
+                                    .commit();
                         }
+                    }
 
-                        @Override
-                        public void onFailure(@NonNull Call<MangaResponse> call, @NonNull Throwable t) {
-                        }
-                    });
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                    @Override
+                    public void onFailure(@NonNull Call<MangaResponse> call, @NonNull Throwable t) {
+                    }
+                });
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }));
-
     }
 }

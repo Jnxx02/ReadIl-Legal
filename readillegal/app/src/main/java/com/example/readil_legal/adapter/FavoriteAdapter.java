@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,7 +31,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder> {
-
     private List<Manga> mangaList;
     private Context context;
     private final ApiService apiService;
@@ -46,7 +44,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
     @NonNull
     @Override
     public FavoriteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.comic_carousel, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.comic_carousel, parent,
+                false);
         return new FavoriteViewHolder(view);
     }
 
@@ -60,14 +59,16 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
 
         String coverId = manga.getCoverId();
         String mangaId = manga.getId();
+
         if (coverId != null) {
             apiService.getMangaCover(coverId).enqueue(new Callback<CoverResponse>() {
                 @Override
                 public void onResponse(@NonNull Call<CoverResponse> call, @NonNull Response<CoverResponse> response) {
                     if (response.isSuccessful() && response.body() != null) {
-                        String coverUrl = "https://uploads.mangadex.org/covers/" + mangaId + "/" + response.body().getData().getAttributes().getFileName();
+                        String coverUrl =
+                                "https://uploads.mangadex.org/covers/" + mangaId + "/" + response.body()
+                                        .getData().getAttributes().getFileName();
                         Picasso.get().load(coverUrl).into(holder.coverImage);
-                        Log.d("FavoriteAdapter", "Manga Title: " + manga.getAttributes().getTitle().getEn());
                     }
                 }
 
@@ -80,14 +81,14 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
 
         holder.relativeLayoutComicList.setOnClickListener(v -> {
             if (mangaId != null && !mangaId.isEmpty()) {
-                Log.d("MangaAdapter", "Manga ID: " + mangaId);
                 Bundle bundle = new Bundle();
                 bundle.putString("manga_id", mangaId);
 
                 MangaDetailFragment mangaDetailFragment = new MangaDetailFragment();
                 mangaDetailFragment.setArguments(bundle);
 
-                FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
+                FragmentManager fragmentManager = ((AppCompatActivity) context)
+                        .getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, mangaDetailFragment)
                         .addToBackStack(null)
@@ -117,4 +118,3 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
         }
     }
 }
-

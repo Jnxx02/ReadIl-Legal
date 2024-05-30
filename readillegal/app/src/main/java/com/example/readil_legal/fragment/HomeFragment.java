@@ -1,7 +1,6 @@
 package com.example.readil_legal.fragment;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,11 +16,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.readil_legal.R;
-import com.example.readil_legal.LobbyActivity;
 import com.example.readil_legal.adapter.MangaAdapter;
 import com.example.readil_legal.model.Manga;
 import com.example.readil_legal.model.MangaResponse;
@@ -91,7 +88,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void fetchMangaData() {
-        ErrorFragment errorNoConnetionFragment = new ErrorFragment();
+        ErrorFragment errorFragment = new ErrorFragment();
 
         int offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
@@ -105,10 +102,6 @@ public class HomeFragment extends Fragment {
                     mangaList.addAll(response.body().getData());
                     handler.post(() -> {
                         mangaAdapter.notifyDataSetChanged();
-                        Log.d("HomeFragment", "Manga list updated: " + mangaList.size());
-                        for (Manga manga : mangaList) {
-                            Log.d("HomeFragment", "Manga ID: " + manga.getId());
-                        }
                     });
                 } else {
                     Log.e("API_ERROR", "Response is not successful");
@@ -121,7 +114,7 @@ public class HomeFragment extends Fragment {
 
                 handler.post(() -> getParentFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.fragment_container, errorNoConnetionFragment)
+                        .replace(R.id.fragment_container, errorFragment)
                         .commit());
             }
         });

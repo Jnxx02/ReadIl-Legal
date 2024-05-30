@@ -32,7 +32,9 @@
             android:fontFamily="@font/open_sans_extrabold"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:text="Comic Title"/>
+            android:text="Comic Title"
+            android:maxLines="2"
+            android:ellipsize="end"/>
 
         <TextView
             android:id="@+id/tv_comicType"
@@ -57,6 +59,8 @@
             android:textSize="12sp"
             android:fontFamily="@font/poppins_light"
             android:textColor="@color/grey"
-            android:text="Tags"/>
+            android:text="Tags"
+            android:maxLines="2"
+            android:ellipsize="end"/>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
