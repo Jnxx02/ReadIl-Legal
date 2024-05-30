@@ -37,10 +37,13 @@ ReadIl-Legal adalah aplikasi database komik dengan menggunakan API dari MangaDex
 
 ## Referensi
 - [MangaDex API Documentation](https://api.mangadex.org/docs/)
-- [Color Pallette]([https://nodejs.org/en/docs/](https://colorhunt.co/palette/2650732d95969ad0c2f1fada))
-- [Webtoon]([https://expressjs.com/](https://www.webtoons.com/id/))
-- [MangaDex]([https://reactjs.org/docs/getting-started.html](https://mangadex.org))
+- [Color Pallette](https://colorhunt.co/palette/2650732d95969ad0c2f1fada)
+- [Webtoon](https://www.webtoons.com/id/)
+- [MangaDex](https://mangadex.org)
 
 ## Preview Aplikasi
-Lihat tangkapan layar aplikasi di [halaman screenshot](screenshot_page_url).
+![Preview](https://raw.githubusercontent.com/Jnxx02/ReadIl-Legal/main/App%20Preview/Readle_Preview_1.jpg?token=GHSAT0AAAAAACR7BOU5SQIUIKIV4GLD4YJKZSYVHBA)
+![Preview](https://raw.githubusercontent.com/Jnxx02/ReadIl-Legal/main/App%20Preview/Readle_Preview_2.jpg?token=GHSAT0AAAAAACR7BOU43RAQGM7KLFISAAZ4ZSYVJOQ)
+![Preview](https://raw.githubusercontent.com/Jnxx02/ReadIl-Legal/main/App%20Preview/Readle_Preview_3.jpg?token=GHSAT0AAAAAACR7BOU4GJXC2GVSD7HEOAPCZSYVJRA)
+![Preview](https://raw.githubusercontent.com/Jnxx02/ReadIl-Legal/main/App%20Preview/Readle_Preview_4.jpg?token=GHSAT0AAAAAACR7BOU526GN4KIIPLE2FWBSZSYVJTA)
 
