@@ -40,7 +40,6 @@ public class MangaDetailFragment extends Fragment {
     private ImageView coverImage;
     private TextView title, description, year, tags, status, lastUploaded;
     private ImageButton btnFavorite;
-    private View loadingView;
     private ApiService apiService;
     private Handler handler;
     private String mangaId;
@@ -68,7 +67,7 @@ public class MangaDetailFragment extends Fragment {
         btnFavorite = view.findViewById(R.id.btn_favorite);
 
         sharedPreferences = getActivity()
-                .getSharedPreferences("favorites", Context.MODE_PRIVATE);
+                .getSharedPreferences("favorites_list", Context.MODE_PRIVATE);
         gson = new Gson();
         ErrorFragment errorNoConnetionFragment = new ErrorFragment();
 
@@ -101,7 +100,6 @@ public class MangaDetailFragment extends Fragment {
 
                                     handler.post(() -> {
                                         if (manga != null) {
-                                            loadingView.setVisibility(View.GONE);
                                             fetchCoverImage(mangaId, manga.getCoverId());
 
                                             title.setText(manga.getAttributes().getTitle().getEn());

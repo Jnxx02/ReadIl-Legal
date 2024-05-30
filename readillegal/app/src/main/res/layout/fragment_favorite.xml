@@ -68,14 +68,27 @@
                 android:text="Enjoy your favorite titles"
                 android:textStyle="bold"/>
 
+            <TextView
+                android:id="@+id/tv_announce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/open_sans_extrabold"
+                android:text="Go Add Some Titles Here!"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_list"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginHorizontal="28dp"
                 android:layout_marginTop="8dp"
                 android:paddingHorizontal="2dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"
                 tools:listitem="@layout/comic_carousel" />
         </LinearLayout>

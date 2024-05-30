@@ -7,12 +7,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.readil_legal.R;
 import com.example.readil_legal.adapter.FavoriteAdapter;
@@ -38,8 +40,8 @@ public class FavoriteFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         RecyclerView recyclerView = view.findViewById(R.id.rv_list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),
-                LinearLayoutManager.HORIZONTAL, false));
+        TextView tvAnnounce = view.findViewById(R.id.tv_announce);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         SharedPreferences sharedPreferences = getActivity()
                 .getSharedPreferences("favorites_list", Context.MODE_PRIVATE);
@@ -51,7 +53,10 @@ public class FavoriteFragment extends Fragment {
         List<Manga> favoriteMangaList = gson.fromJson(jsonFavorites, type);
 
         if (favoriteMangaList == null) {
+            tvAnnounce.setVisibility(View.VISIBLE);
             favoriteMangaList = new ArrayList<>();
+        } else {
+            tvAnnounce.setVisibility(View.GONE);
         }
 
         FavoriteAdapter favoriteAdapter = new FavoriteAdapter(favoriteMangaList,
