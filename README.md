@@ -42,6 +42,7 @@ ReadIl-Legal adalah aplikasi database komik dengan menggunakan API dari MangaDex
 - [MangaDex](https://mangadex.org)
 
 ## Preview Aplikasi
+<img src="[https://raw.githubusercontent.com/Jnxx02/ReadIl-Legal/main/App%20Preview/Readle_Preview_1.jpg](https://raw.githubusercontent.com/Jnxx02/ReadIl-Legal/main/App%20Preview/Readle_Preview_1.jpg?token=GHSAT0AAAAAACR7BOU5SQIUIKIV4GLD4YJKZSYVHBA)" alt="Preview" width="500"/>
 ![Preview](https://raw.githubusercontent.com/Jnxx02/ReadIl-Legal/main/App%20Preview/Readle_Preview_1.jpg?token=GHSAT0AAAAAACR7BOU5SQIUIKIV4GLD4YJKZSYVHBA)
 ![Preview](https://raw.githubusercontent.com/Jnxx02/ReadIl-Legal/main/App%20Preview/Readle_Preview_2.jpg?token=GHSAT0AAAAAACR7BOU43RAQGM7KLFISAAZ4ZSYVJOQ)
 ![Preview](https://raw.githubusercontent.com/Jnxx02/ReadIl-Legal/main/App%20Preview/Readle_Preview_3.jpg?token=GHSAT0AAAAAACR7BOU4GJXC2GVSD7HEOAPCZSYVJRA)
