@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".fragment.HomeFragment"
+    tools:context=".SearchActivity"
     android:orientation="vertical"
     android:background="@color/pallet4">
 
@@ -35,15 +35,6 @@
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"/>
-
-            <ImageView
-                android:id="@+id/iv_search"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="end"
-                android:layout_marginEnd="24dp"
-                android:src="@drawable/icon_search"
-                android:contentDescription="Search Icon"/>
         </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
@@ -61,7 +52,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/open_sans_extrabold"
-                android:text="New Here?"
+                android:text="Looking For Some Titles?"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -74,40 +65,25 @@
                 android:textSize="14sp"
                 android:fontFamily="@font/poppins_light"
                 android:textColor="@color/grey"
-                android:text="Get matched to top titles"
+                android:text="Go find some titles"
                 android:textStyle="bold"/>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:layout_marginTop="16dp">
+                android:layout_gravity="center">
 
-                <Button
-                    android:id="@+id/btn_previous_page"
-                    android:layout_width="110dp"
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search"
+                    android:layout_width="360dp"
                     android:layout_height="wrap_content"
-                    android:text="Previous"
-                    android:fontFamily="@font/poppins_light"/>
-
-                <TextView
-                    android:id="@+id/tv_current_page"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/poppins_light"/>
-
-                <Button
-                    android:id="@+id/btn_next_page"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:text="Next"
-                    android:fontFamily="@font/poppins_light"/>
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    app:queryHint="Search Titles"
+                    android:fontFamily="@font/poppins_light"
+                    android:textColor="@color/grey"/>
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -115,11 +91,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:paddingHorizontal="4dp"
                 android:orientation="vertical"
+                android:paddingHorizontal="4dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="10"
                 tools:listitem="@layout/comic_list" />
         </LinearLayout>
     </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/background_top_rounded"
+        android:paddingVertical="5dp"
+        app:itemActiveIndicatorStyle="@color/grey"
+        app:itemIconSize="30dp"
+        app:menu="@menu/bottom_nav_menu" />
 </LinearLayout>

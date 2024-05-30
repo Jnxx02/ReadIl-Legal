@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -66,7 +67,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
                     if (response.isSuccessful() && response.body() != null) {
                         String coverUrl = "https://uploads.mangadex.org/covers/" + mangaId + "/" + response.body().getData().getAttributes().getFileName();
                         Picasso.get().load(coverUrl).into(holder.coverImage);
-                        Log.d("MangaAdapterss", "Manga Title: " + manga.getAttributes().getTitle().getEn());
+                        Log.d("FavoriteAdapter", "Manga Title: " + manga.getAttributes().getTitle().getEn());
                     }
                 }
 

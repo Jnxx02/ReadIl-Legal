@@ -1,6 +1,7 @@
 package com.example.readil_legal.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,9 +17,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.readil_legal.R;
+import com.example.readil_legal.SearchActivity;
 import com.example.readil_legal.adapter.MangaAdapter;
 import com.example.readil_legal.model.Manga;
 import com.example.readil_legal.model.MangaResponse;
@@ -41,6 +44,7 @@ public class HomeFragment extends Fragment {
     private static final int ITEMS_PER_PAGE = 10;
     private int currentPage = 1;
     private TextView tvCurrentPage;
+    private ImageView ivSearch;
     private ExecutorService executorService;
     private Handler handler;
 
@@ -55,6 +59,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ivSearch = view.findViewById(R.id.iv_search);
         Button btnNextPage = view.findViewById(R.id.btn_next_page);
         Button btnPreviousPage = view.findViewById(R.id.btn_previous_page);
         tvCurrentPage = view.findViewById(R.id.tv_current_page);
@@ -67,6 +72,14 @@ public class HomeFragment extends Fragment {
         apiService = RetrofitClient.getClient().create(ApiService.class);
         executorService = Executors.newSingleThreadExecutor();
         handler = new Handler(Looper.getMainLooper());
+
+        ivSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
 
         updatePageText();
 
