@@ -19,6 +19,7 @@ import com.example.readil_legal.R;
 import com.example.readil_legal.fragment.MangaDetailFragment;
 import com.example.readil_legal.model.CoverResponse;
 import com.example.readil_legal.model.Manga;
+import com.example.readil_legal.model.MangaResponse;
 import com.example.readil_legal.network.ApiService;
 import com.example.readil_legal.network.RetrofitClient;
 import com.squareup.picasso.Picasso;
@@ -31,7 +32,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.MangaViewHolder> {
-    private final List<Manga> mangaList;
+    private List<Manga> mangaList;
     private final Context context;
     private final ApiService apiService;
 

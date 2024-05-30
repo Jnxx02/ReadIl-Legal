@@ -22,12 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
             if (menuItem.getItemId() == R.id.nav_home) {
                 selectedFragment = new HomeFragment();
-//                } else if (menuItem.getItemId() == R.id.nav_search) {
-//                    selectedFragment = new SearchFragment();
             } else if (menuItem.getItemId() == R.id.nav_favorite) {
                 selectedFragment = new FavoriteFragment();
-//                } else if (menuItem.getItemId() == R.id.nav_profile) {
-//                    selectedFragment = new ProfileFragment();
             }
 
             if (selectedFragment != null) {

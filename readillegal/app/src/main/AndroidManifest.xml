@@ -15,7 +15,7 @@
         android:theme="@style/Theme.ReadIlLegal"
         tools:targetApi="31">
         <activity
-            android:name=".SearchActivity"
+            android:name=".LobbyActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
