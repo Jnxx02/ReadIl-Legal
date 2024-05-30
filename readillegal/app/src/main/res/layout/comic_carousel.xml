@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/rl_favComic"
+    android:padding="4dp">
+
+    <ImageView
+        android:id="@+id/iv_favCover"
+        android:layout_width="164dp"
+        android:layout_height="204dp"
+        android:foreground="@drawable/shadow"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/tv_favTitle"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/open_sans_extrabold"
+        android:gravity="bottom"
+        android:text="Solo Leveling"
+        android:textColor="@color/pallet4"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_favTags"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_favTitle"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:paddingHorizontal="2dp"
+        android:background="@drawable/genre_background"
+        android:fontFamily="@font/poppins_light"
+        android:text="Action, Fantasy, Mysetery"
+        android:textStyle="bold"
+        android:textColor="@color/pallet4"
+        android:textSize="12sp" />
+</RelativeLayout>
