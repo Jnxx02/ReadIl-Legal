@@ -191,7 +191,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/btn_star_big_off"
-            android:layout_marginStart="280dp"
+            android:layout_marginStart="240dp"
             android:contentDescription="favorite"
             android:layout_gravity="end" />
     </LinearLayout>

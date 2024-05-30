@@ -44,7 +44,7 @@ public class FavoriteFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         SharedPreferences sharedPreferences = getActivity()
-                .getSharedPreferences("favorites_list", Context.MODE_PRIVATE);
+                .getSharedPreferences("favorites", Context.MODE_PRIVATE);
         Gson gson = new Gson();
 
         // Retrieve favorites from SharedPreferences

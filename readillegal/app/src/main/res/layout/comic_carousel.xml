@@ -11,17 +11,20 @@
         android:layout_height="204dp"
         android:foreground="@drawable/shadow"
         android:scaleType="centerCrop"
-        android:src="@drawable/readle_appicon" />
+        android:src="@drawable/readle_appicon"
+        android:contentDescription="Comic Cover"/>
 
     <TextView
         android:id="@+id/tv_favTitle"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="110dp"
+        android:layout_alignBottom="@id/iv_favCover"
+        android:layout_marginBottom="30dp"
+        android:layout_marginHorizontal="4dp"
         android:fontFamily="@font/open_sans_extrabold"
         android:gravity="bottom"
-        android:text="Solo Leveling"
+        android:text="Comic Title"
+        android:paddingHorizontal="4dp"
         android:textColor="@color/pallet4"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -30,18 +33,18 @@
 
     <TextView
         android:id="@+id/tv_favTags"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_favTitle"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="3dp"
-        android:background="@drawable/genre_background"
+        android:layout_alignBottom="@id/iv_favCover"
+        android:layout_marginBottom="8dp"
+        android:layout_marginHorizontal="4dp"
         android:fontFamily="@font/poppins_light"
-        android:paddingHorizontal="2dp"
-        android:text="Action, Fantasy, Mysetery"
+        android:paddingHorizontal="4dp"
+        android:text="Comic Tags"
         android:textColor="@color/pallet4"
         android:textSize="12sp"
         android:textStyle="bold"
-        android:maxLines="2"
-        android:ellipsize="end"/>
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:gravity="bottom"/>
 </RelativeLayout>

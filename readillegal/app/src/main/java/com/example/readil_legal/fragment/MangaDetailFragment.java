@@ -67,7 +67,7 @@ public class MangaDetailFragment extends Fragment {
         btnFavorite = view.findViewById(R.id.btn_favorite);
 
         sharedPreferences = getActivity()
-                .getSharedPreferences("favorites_list", Context.MODE_PRIVATE);
+                .getSharedPreferences("favorites", Context.MODE_PRIVATE);
         gson = new Gson();
         ErrorFragment errorNoConnetionFragment = new ErrorFragment();
 
