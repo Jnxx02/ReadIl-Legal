@@ -43,9 +43,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_light"
                 android:lineSpacingExtra="4dp"
                 android:text="@string/description"
-                android:fontFamily="@font/poppins_light"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
@@ -156,32 +156,70 @@
                     android:id="@+id/tv_detailTags"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Action, Adventure"
-                    android:paddingStart="8dp"
                     android:fontFamily="@font/poppins_light"
+                    android:paddingStart="8dp"
+                    android:text="Action, Adventure"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
+
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/darker_gray" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/pallet2"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/lato"
+                    android:text="Daftar Chapter"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"/>
+            </androidx.appcompat.widget.Toolbar>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewChapters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
+                tools:listitem="@layout/chapter_button"/>
         </LinearLayout>
     </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:padding="16dp"
+        android:layout_gravity="top"
         android:background="@android:color/transparent"
-        android:layout_gravity="top">
+        android:orientation="horizontal"
+        android:padding="16dp">
 
         <ImageButton
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:paddingTop="4dp"
             android:layout_marginStart="12dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="back button"
+            android:paddingTop="4dp"
             android:src="@drawable/baseline_arrow_back_24"
             app:tint="@android:color/black" />
 
@@ -189,10 +227,11 @@
             android:id="@+id/btn_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/btn_star_big_off"
+            android:layout_gravity="end"
             android:layout_marginStart="240dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="favorite"
-            android:layout_gravity="end" />
+            android:src="@android:drawable/btn_star_big_off" />
     </LinearLayout>
+
 </FrameLayout>

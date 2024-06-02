@@ -1,11 +1,15 @@
 package com.example.readil_legal.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -16,7 +20,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.readil_legal.ChapterDetailActivity;
 import com.example.readil_legal.R;
+import com.example.readil_legal.adapter.ChapterAdapter;
+import com.example.readil_legal.model.Chapter;
+import com.example.readil_legal.model.ChapterDetailResponse;
 import com.example.readil_legal.model.CoverResponse;
 import com.example.readil_legal.model.Manga;
 import com.example.readil_legal.model.MangaDetailResponse;
@@ -28,6 +37,8 @@ import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -44,6 +55,9 @@ public class MangaDetailFragment extends Fragment {
     private Handler handler;
     private String mangaId;
     private Manga manga;
+    private RecyclerView recyclerView;
+    private ChapterAdapter chapterAdapter;
+    private List<Chapter> chapters;
     private SharedPreferences sharedPreferences;
     private Gson gson;
 
@@ -65,6 +79,10 @@ public class MangaDetailFragment extends Fragment {
         lastUploaded = view.findViewById(R.id.tv_detailLastUploaded);
         ImageButton btnBack = view.findViewById(R.id.btn_back);
         btnFavorite = view.findViewById(R.id.btn_favorite);
+
+        recyclerView = view.findViewById(R.id.recyclerViewChapters);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+
 
         sharedPreferences = getActivity()
                 .getSharedPreferences("favorites", Context.MODE_PRIVATE);
@@ -111,6 +129,7 @@ public class MangaDetailFragment extends Fragment {
                                             status.setText(manga.getAttributes().getStatus());
                                             lastUploaded.setText(manga.getAttributes().getLastChapter());
 
+                                            fetchMangaChapters(mangaId);
                                             updateFavoriteButton();
                                         }
                                     });
@@ -155,6 +174,46 @@ public class MangaDetailFragment extends Fragment {
             public void onFailure(@NonNull Call<CoverResponse> call, @NonNull Throwable t) {
                 Toast.makeText(getContext(), "Failed to fetch cover image: " +
                         t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void fetchMangaChapters(String mangaId) {
+        Call<ChapterDetailResponse> call = apiService.getChapterDetails(mangaId);
+        call.enqueue(new Callback<ChapterDetailResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<ChapterDetailResponse> call, @NonNull Response<ChapterDetailResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    chapters = response.body().getData();
+
+                    chapters = chapters.stream()
+                            .filter(c -> "en".equals(c.getAttributes().getTranslatedLanguage()))
+                            .collect(Collectors.toList());
+
+                    chapters.sort(Comparator.comparingDouble(c -> {
+                        try {
+                            return Double.parseDouble(c.getAttributes().getChapter());
+                        } catch (NumberFormatException e) {
+                            return 0.0;
+                        }
+                    }));
+
+                    chapterAdapter = new ChapterAdapter(getContext(), chapters, (chapter, position, chapterList) -> {
+                        Intent intent = new Intent(getContext(), ChapterDetailActivity.class);
+                        intent.putExtra("chapterId", chapter.getId());
+                        intent.putExtra("chapterIndex", position);
+                        intent.putParcelableArrayListExtra("chapters", new ArrayList<>(chapterList));  // Pass the chapters list
+                        startActivity(intent);
+                    });
+                    recyclerView.setAdapter(chapterAdapter);
+                } else {
+                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ChapterDetailResponse> call, @NonNull Throwable t) {
+                Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
